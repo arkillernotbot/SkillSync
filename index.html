@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillSync Prototype</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Navigation / Role Switcher -->
+  <header>
+    <div class="logo">SkillSync Prototype</div>
+    <nav class="role-selector">
+      <button class="active" onclick="switchRole('student')">Student View</button>
+      <button onclick="switchRole('industry')">Industry View</button>
+      <button onclick="switchRole('college')">College View</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. STUDENT VIEW -->
+    <section id="student-view" class="view-panel">
+      <h2>Student Portal</h2>
+      <p class="subtitle">Enter your credentials to receive auto-matched internship notifications.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Your Profile</h3>
+          <form id="student-form" onsubmit="saveStudentProfile(event)">
+            <label>Full Name:</label>
+            <input type="text" id="stu-name" placeholder="e.g. Arnab Roy" required />
+
+            <label>Degree & Major:</label>
+            <input type="text" id="stu-degree" placeholder="e.g. B.Tech Computer Science" required />
+
+            <label>Skills & Certificates (comma separated):</label>
+            <input type="text" id="stu-skills" placeholder="e.g. Python, SQL, React" required />
+
+            <button type="submit" class="btn-primary">Update Profile</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Matched Opportunities</h3>
+          <p id="student-status-text">Save your profile to view matching listings.</p>
+          <div id="student-matches-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. INDUSTRY VIEW -->
+    <section id="industry-view" class="view-panel hidden">
+      <h2>Industry / Recruiter Portal</h2>
+      <p class="subtitle">Post requirements and see only verified matching applicants.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Post Internship / Job</h3>
+          <form id="job-form" onsubmit="postJob(event)">
+            <label>Job Title:</label>
+            <input type="text" id="job-title" placeholder="e.g. Junior Data Analyst" required />
+
+            <label>Company Name:</label>
+            <input type="text" id="job-company" placeholder="e.g. TechCorp" required />
+
+            <label>Required Skills (comma separated):</label>
+            <input type="text" id="job-skills" placeholder="e.g. Python, SQL" required />
+
+            <button type="submit" class="btn-primary">Publish Posting</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Targeted Talent Pool</h3>
+          <p>Candidates matching current job requirements:</p>
+          <div id="industry-talent-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. COLLEGE / ACADEMIC VIEW -->
+    <section id="college-view" class="view-panel hidden">
+      <h2>College & Academics Portal</h2>
+      <p class="subtitle">Modify curriculum according to real-time industry demands.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Current Curriculum Focus</h3>
+          <ul class="tag-list" id="curriculum-list">
+            <li>C++ Programming</li>
+            <li>Database Management Systems (DBMS)</li>
+            <li>Operating Systems</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Industry Skill Demand Gap</h3>
+          <p>Skills demanded by industry postings not yet fully covered in courses:</p>
+          <div id="skill-gap-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
