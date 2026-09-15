@@ -1,13 +1,7 @@
 // In-memory data store for the prototype
 let studentProfile = null;
 
-let jobListings = [
-  {
-    title: "Python Developer Intern",
-    company: "DataWorks Ltd.",
-    skills: ["python", "sql"]
-  }
-];
+let jobListings = [];
 
 let collegeCurriculum = ["c++", "dbms", "operating systems"];
 
